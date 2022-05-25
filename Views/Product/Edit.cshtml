@@ -1,0 +1,63 @@
+@model GestionDeStockMagasin.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<form asp-action="Edit">
+    <div class="border p-3 mt-4">
+       
+            <div class="row pb-2">
+			    <h2 class="text-primary">Update Product</h2>
+			    <hr />
+		    </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marque" class="control-label"></label>
+                <input asp-for="Marque" class="form-control" />
+                <span asp-validation-for="Marque" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QteStock" class="control-label"></label>
+                <input asp-for="QteStock" class="form-control" />
+                <span asp-validation-for="QteStock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categorie" class="control-label"></label>
+                <input asp-for="Categorie" class="form-control" />
+                <span asp-validation-for="Categorie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="prixUnite" class="control-label"></label>
+                <input asp-for="prixUnite" class="form-control" />
+                <span asp-validation-for="prixUnite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+    </div>
+</form>
+
+<div>
+     <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to List
+		</a>
+</div>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}

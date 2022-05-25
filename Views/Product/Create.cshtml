@@ -1,0 +1,71 @@
+@model GestionDeStockMagasin.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+<form asp-action="Create">
+    <div class="border p-3 mt-4">
+
+			<div class="row pb-2">
+			    <h2 class="text-primary">Create Product</h2>
+			    <hr />
+		    </div>
+		
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Marque" class="control-label"></label>
+                <input asp-for="Marque" class="form-control" />
+                <span asp-validation-for="Marque" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="QteStock" class="control-label"></label>
+                <input asp-for="QteStock" class="form-control" />
+                <span asp-validation-for="QteStock" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <select asp-for="Categorie" id="DropDownList1">
+                    <option asp-for="Categorie" value="">Please Select</option>
+                    <option asp-for="Categorie" value="Greater Noida">Greater Noida</option>
+                    <option asp-for="Categorie" value="NewYork">NewYork</option>
+                    <option asp-for="Categorie" value="Paris">Paris</option>
+                </select>
+                <!--<span asp-validation-for="Categorie" class="text-danger"></span>-->
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <!--<label for="floatingTextarea"></label>-->
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="prixUnite" class="control-label"></label>
+                <input asp-for="prixUnite" class="form-control" />
+                <span asp-validation-for="prixUnite" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        
+        
+    </div>
+</form>
+<div>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to List
+		</a>
+</div>
+
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
