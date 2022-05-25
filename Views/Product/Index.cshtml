@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Produits";
 }
-
+<br>
 <h1>Liste Des Produits </h1>
 
 <partial name="_notification"/>
@@ -13,6 +13,7 @@
         <div class="col-6">
             <h2 class="text-primary">Product List</h2>
 		</div>
+        <partial name="_notification"/>
         <div class="col-6 text-end">
             <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
                <i class="bi bi-plus-circle"></i> &nbsp; Create New Product
