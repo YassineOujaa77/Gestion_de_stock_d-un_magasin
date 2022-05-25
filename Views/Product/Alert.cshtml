@@ -1,0 +1,95 @@
+@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Produits";
+}
+<br>
+<h1 class="text-danger">Liste Des Alerts de stock minimum </h1>
+
+<partial name="_notification"/>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+                 <partial name="_notification"/>
+                
+                
+          
+		</div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+               <i class="bi bi-plus-circle"></i> &nbsp; Create New Product
+			</a>
+		</div>
+	</div>
+    <br /><br />
+<table class="table">
+    <thead>
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QteStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prixUnite)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-danger">
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td class="text-danger">
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td class="text-danger">
+                @Html.DisplayFor(modelItem => item.Marque)
+            </td>
+            <td class="text-danger">
+                @Html.DisplayFor(modelItem => item.QteStock)
+            </td >
+            <td class="text-danger">
+                @Html.DisplayFor(modelItem => item.Categorie)
+            </td>
+            <td class="text-danger">
+                @Html.DisplayFor(modelItem => item.DateStock)
+            </td>
+            <td class="text-danger">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td class="text-danger" >
+                @Html.DisplayFor(modelItem => item.prixUnite)
+            </td>
+            <td>
+                <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.id"
+                        class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
+                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.id"
+                         class="btn btn-danger mx-2" ><i class="bi bi-trash-fill"></i> Delete </a>
+			 </div>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
