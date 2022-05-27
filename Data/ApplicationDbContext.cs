@@ -12,5 +12,6 @@ namespace stock_management.Data
         }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Personnel> personnels { get; set; }
     }
 }
