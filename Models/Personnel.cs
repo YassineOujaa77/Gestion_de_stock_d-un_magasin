@@ -15,7 +15,7 @@ namespace stock_management.Models
         public string Email { get; set; }
 
         [StringLength(18, ErrorMessage = "Minimum eight characters, at least one letter and one number.", MinimumLength = 8)]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", ErrorMessage = "Minimum eight characters, at least one letter and one number.")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
