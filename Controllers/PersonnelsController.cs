@@ -60,6 +60,21 @@ namespace stock_management.Controllers
         {
             if (ModelState.IsValid)
             {
+                // generate a 128-bit salt using a cryptographically strong random sequence of nonzero values
+                byte[] salt = new byte[128 / 8];
+                using (var rngCsp = new RNGCryptoServiceProvider())
+                {
+                    rngCsp.GetNonZeroBytes(salt);
+                }
+
+                // derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: personnel.Password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 100000,
+                numBytesRequested: 256 / 8));; ;
+                personnel.Password = hashed;
                 _context.Add(personnel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
