@@ -1,0 +1,16 @@
+﻿
+@using Microsoft.AspNetCore.Http
+
+@if (Context.Session.GetString("Id")  != null )
+{
+  <li class="nav-item end ">
+    <a class="nav-link " asp-area="" asp-controller="Login" asp-action="logout" >Log out</a>
+</li>  
+}
+
+else{
+
+    <li class="nav-item end ">
+    <a class="nav-link   " asp-area="" asp-controller="Login" asp-action="login">Log in</a>
+</li>  
+}

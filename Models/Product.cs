@@ -6,7 +6,7 @@ namespace GestionDeStockMagasin.Models
     public class Product
     {
         [Key ] //data annotation 
-        public int id { get; set; }
+        public int ProductId { get; set; }
 
         [Required]
         public String Nom { get; set; }
@@ -28,6 +28,8 @@ namespace GestionDeStockMagasin.Models
 
         [Required]
         public int prixUnite{ get; set; } 
+
+        public List<Facture> Facture { get; set; }
     }
 
 

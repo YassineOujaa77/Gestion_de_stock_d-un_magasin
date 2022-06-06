@@ -42,15 +42,20 @@ namespace GestionDeStockMagasin.Controllers
         [ValidateAntiForgeryToken]
          public IActionResult Create(Product obj)
         {
-          
-
-            if(ModelState.IsValid){
-                _db.Products.Add(obj);
-                _db.SaveChanges();
-                TempData["success"] = "Product added successfully ";
-                return RedirectToAction("Index");
-            }
-            return View(obj);
+            //if(ModelState.IsValid){
+                var results = _db.Products.Where(p => p.Nom.ToLower() == obj.Nom.ToLower() ).Select(p => p.Nom).SingleOrDefault();
+                if(results!=null){
+                    TempData["error"] = "Ce Produit existe déjà ";
+                    return View(obj);
+                }else{
+                    _db.Products.Add(obj);
+                    _db.SaveChanges();
+                    TempData["success"] = "Product added successfully ";
+                    return RedirectToAction("Index");
+                }
+                
+           // }
+            
         }
 
         public IActionResult Edit(int? id)
@@ -74,13 +79,15 @@ namespace GestionDeStockMagasin.Controllers
          public IActionResult Edit(Product obj)
         {
             
-            if(ModelState.IsValid){
-                 _db.Products.Update(obj);
+            //if(ModelState.IsValid){
+                
+                _db.Products.Update(obj);
+                
                 _db.SaveChanges();
                 TempData["success"] = "Product updated successfully ";
                 return RedirectToAction("Index");
-            }
-            return View(obj);
+            //}
+            //return View(obj);
         }
 
 
@@ -125,6 +132,14 @@ namespace GestionDeStockMagasin.Controllers
 
         //GET 
         public IActionResult Alert(){
+            //pour verifier si c'est l'utilisateur posede le droit d'entrer avec son role 
+            RoleController1 verificateur = new RoleController1();
+            if (verificateur.role("Alerts", HttpContext.Session.GetString("Role")) != null)
+            {
+                TempData["error"] = "you are not allowed";
+                return verificateur.role("Alerts", HttpContext.Session.GetString("Role"));
+            }
+
             IEnumerable<Product> objProductList = _db.Products.Where(p => p.QteStock <= 2  ).ToList();
             if(objProductList.Count()!=0)
             {

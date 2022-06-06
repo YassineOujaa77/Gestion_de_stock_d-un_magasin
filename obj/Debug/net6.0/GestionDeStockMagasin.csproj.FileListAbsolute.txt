@@ -1,6 +1,5 @@
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/appsettings.Development.json
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/appsettings.json
-/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/GestionDeStockMagasin.staticwebassets.runtime.json
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/GestionDeStockMagasin
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/GestionDeStockMagasin.deps.json
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/GestionDeStockMagasin.runtimeconfig.json
@@ -47,11 +46,6 @@
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/GestionDeStockMagasin.MvcApplicationPartsAssemblyInfo.cache
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/GestionDeStockMagasin.RazorAssemblyInfo.cache
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/GestionDeStockMagasin.RazorAssemblyInfo.cs
-/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/staticwebassets.build.json
-/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/staticwebassets.development.json
-/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
-/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/scopedcss/bundle/GestionDeStockMagasin.styles.css
-/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/scopedcss/projectbundle/GestionDeStockMagasin.bundle.scp.css
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/GestionDeStockMagasin.csproj.CopyComplete
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/GestionDeStockMagasin.dll
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/ref/GestionDeStockMagasin.dll
@@ -261,3 +255,12 @@
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/runtimes/win-arm/lib/net6.0/dotnet-aspnet-codegenerator-design.exe
 /home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/runtimes/win-arm64/lib/net6.0/dotnet-aspnet-codegenerator-design.exe
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/GestionDeStockMagasin.staticwebassets.runtime.json
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/staticwebassets.build.json
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/staticwebassets.development.json
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/scopedcss/bundle/GestionDeStockMagasin.styles.css
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/obj/Debug/net6.0/scopedcss/projectbundle/GestionDeStockMagasin.bundle.scp.css
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/SystemWeb.dll
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/BouncyCastle.Crypto.dll
+/home/yassine/Documents/Education/AspDotnet/GestionDeStockMagasin/bin/Debug/net6.0/itextsharp.dll

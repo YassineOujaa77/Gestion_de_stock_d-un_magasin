@@ -1,0 +1,97 @@
+<!--
+<form asp-action="Create">
+    <div class="border p-3 mt-4">
+
+			<div class="row pb-2">
+			    <h2 class="text-primary">Buy Product</h2>
+			    <hr />
+		    </div>
+            <h3>Ajouter les informations de client </h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Prenom" class="control-label"></label>
+                <input asp-for="Prenom" class="form-control" />
+                <span asp-validation-for="Prenom" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Adresses" class="control-label"></label>
+                <input asp-for="Adresses" class="form-control" />
+                <span asp-validation-for="Adresses" class="text-danger"></span>
+            </div>
+
+            <h3>Ou Selectionner un client existe déjà </h3>
+            <select asp-for="ClientId" 
+                class="form-control" 
+                asp-items =""
+                >
+                
+            </select>
+
+            <h3>selectionner le produit et ajouter la quantite </h3>
+
+
+            <div class="form-group mb-3">
+                <label asp-for="QteStock" class="control-label"></label>
+                <input asp-for="QteStock" class="form-control" />
+                <span asp-validation-for="QteStock" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <input type="submit" value="save" class="btn btn-primary" />
+            </div>
+        
+        
+    </div>
+</form>
+-->
+
+
+@foreach (Product product in Model.Products) {
+    
+        @Html.DisplayFor(modelItem => product.Nom)
+}
+
+
+
+<h3>Ajouter les informations de client </h3>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group mb-3">
+                        <label asp-for="client.Nom" class="control-label"></label>
+                        <input asp-for="client.Nom" class="form-control" />
+                        <span asp-validation-for="client.Nom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="client.Prenom" class="control-label"></label>
+                        <input asp-for="client.Prenom" class="form-control" />
+                        <span asp-validation-for="client.Prenom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="client.Adresses" class="control-label"></label>
+                        <input asp-for="client.Adresses" class="form-control" />
+                        <span asp-validation-for="client.Adresses" class="text-danger"></span>
+                    </div>
+
+                    <h3>Ou Selectionner un client existe déjà </h3>
+                    @*Html.DropDownList("CliendId",ViewData["clientsNames"] as SelectList,"Select client",new {@class = "form-control"})*@
+                <label asp-for="client.Nom" ></label>
+                <select asp-for="client.ClientId" asp-items="@(new SelectList(@ViewBag.clientsName,"ClientId","Nom"))" >
+
+                </select>
+
+
+
+ <h3>selectionner le produit et ajouter la quantite </h3>
+                <label asp-for="product.Nom" ></label>
+                <select asp-for="product.ProductId" asp-items="@(new SelectList(@ViewBag.ProductsName,"ProductId","Nom"))" >
+
+                </select>
+                <div class="form-group ">
+                    <label asp-for="Qte" class="control-label"></label>
+                    <input asp-for="Qte" class="form-control" />
+                    <span asp-validation-for="Qte" class="text-danger"></span>
+                </div>
