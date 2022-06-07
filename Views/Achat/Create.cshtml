@@ -1,0 +1,71 @@
+@model GestionDeStockMagasin.ViewModels.AchatIndexViewModel;
+
+
+
+
+@{
+    ViewData["Title"] = "Achats";
+    
+}
+<partial name="_notification"/>
+
+<form asp-action="Create">
+    <div class="row pb-2">
+        <h2 class="text-primary">Buy Product</h2>
+        <hr />
+    </div>
+    <div class="d-flex justify-content-around">
+            <div class="p-2 bd-highlight">
+                <div class="col-6 text-end">
+                    <a asp-controller="Client" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> &nbsp; Create New Client
+                    </a>
+                </div>
+<br> <br> <br> <br>
+                    <h3>Selectionner un client existe déjà </h3>
+                    @*Html.DropDownList("CliendId",ViewData["clientsNames"] as SelectList,"Select client",new {@class = "form-control"})*@
+                <label asp-for="ClientId" ></label>
+                <select class="form-select" asp-for="ClientId" asp-items="@(new SelectList(Model.clients,"ClientId","Nom"))" >
+                        <option selected>Choisir client </option>
+                </select>
+            </div>
+            <div class="p-2 bd-highlight">
+                 <h3>selectionner le produit et ajouter la quantite </h3>
+                <label asp-for="ProductId" ></label>
+                <select class="form-select" asp-for="ProductId" asp-items="@(new SelectList(Model.products,"ProductId","Nom"))" >
+                        <option selected>Choisir Produit </option>
+                </select>
+                <div class="form-group ">
+                    <label asp-for="Qte" class="control-label"></label>
+                    <input asp-for="Qte" class="form-control" />
+                    <span asp-validation-for="Qte" class="text-danger"></span>
+                </div> <br> <br> <br>
+                <div class="form-group mb-3">
+                    <input type="submit" value="save" class="btn btn-primary" />
+                </div>
+            </div>
+    </div>
+    
+
+    <div>
+        <p>
+            @ViewBag.listFacture
+        </p>
+    </div>
+    
+        
+        
+   
+</form>
+
+
+
+
+
+
+
+
+
+
+
+

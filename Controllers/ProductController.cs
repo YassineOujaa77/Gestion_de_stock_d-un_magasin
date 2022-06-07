@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GestionDeStockMagasin.Data;
 using GestionDeStockMagasin.Models;
+using GestionDeStockMagasin.ViewModels;
 
 namespace GestionDeStockMagasin.Controllers
 {
@@ -33,24 +34,41 @@ namespace GestionDeStockMagasin.Controllers
         // GET
         public IActionResult Create()
         {
-            //IEnumerable<Category> objCategoryList = _db.Categories ;
-            return View();
+           
+            ProductCreateViewModel viewModel = new ProductCreateViewModel(){
+                category = _db.Categories.ToList(),
+            };
+            return View(viewModel);
         }
 
         //Post 
         [HttpPost]
         [ValidateAntiForgeryToken]
-         public IActionResult Create(Product obj)
+         public IActionResult Create(ProductCreateViewModel productCreateViewModel)
         {
-          
+            //if(ModelState.IsValid){
+                var results = _db.Products.Where(p => p.Nom.ToLower() == productCreateViewModel.product.Nom.ToLower() ).Select(p => p.Nom).SingleOrDefault();
+                Product p = new Product();
+                p.Nom = productCreateViewModel.product.Nom;
+                p.Marque = productCreateViewModel.product.Marque;
+                p.QteStock = productCreateViewModel.product.QteStock;
+                p.Categorie = _db.Categories.Where(p => p.IdCategory == productCreateViewModel.IdCategory).Select(p=>p.Name).SingleOrDefault();
+                p.prixUnite = productCreateViewModel.product.prixUnite;
+                p.Description = productCreateViewModel.product.Description;
+                
 
-            if(ModelState.IsValid){
-                _db.Products.Add(obj);
-                _db.SaveChanges();
-                TempData["success"] = "Product added successfully ";
-                return RedirectToAction("Index");
-            }
-            return View(obj);
+                if(results!=null){
+                    TempData["error"] = "Ce Produit existe déjà ";
+                    return View();
+                }else{
+                    _db.Products.Add(p);
+                    _db.SaveChanges();
+                    TempData["success"] = "Product added successfully ";
+                    return RedirectToAction("Index");
+                }
+                
+           // }
+            
         }
 
         public IActionResult Edit(int? id)
@@ -74,13 +92,15 @@ namespace GestionDeStockMagasin.Controllers
          public IActionResult Edit(Product obj)
         {
             
-            if(ModelState.IsValid){
-                 _db.Products.Update(obj);
+            //if(ModelState.IsValid){
+                
+                _db.Products.Update(obj);
+                
                 _db.SaveChanges();
                 TempData["success"] = "Product updated successfully ";
                 return RedirectToAction("Index");
-            }
-            return View(obj);
+            //}
+            //return View(obj);
         }
 
 
@@ -125,6 +145,14 @@ namespace GestionDeStockMagasin.Controllers
 
         //GET 
         public IActionResult Alert(){
+            //pour verifier si c'est l'utilisateur posede le droit d'entrer avec son role 
+            RoleController1 verificateur = new RoleController1();
+            if (verificateur.role("Alerts", HttpContext.Session.GetString("Role")) != null)
+            {
+                TempData["error"] = "you are not allowed";
+                return verificateur.role("Alerts", HttpContext.Session.GetString("Role"));
+            }
+
             IEnumerable<Product> objProductList = _db.Products.Where(p => p.QteStock <= 2  ).ToList();
             if(objProductList.Count()!=0)
             {

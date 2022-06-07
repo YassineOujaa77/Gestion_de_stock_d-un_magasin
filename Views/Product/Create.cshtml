@@ -1,4 +1,4 @@
-@model GestionDeStockMagasin.Models.Product
+@model GestionDeStockMagasin.ViewModels.ProductCreateViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -17,38 +17,35 @@
 		
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3">
-                <label asp-for="Nom" class="control-label"></label>
-                <input asp-for="Nom" class="form-control" />
-                <span asp-validation-for="Nom" class="text-danger"></span>
+                <label asp-for="product.Nom" class="control-label"></label>
+                <input asp-for="product.Nom" class="form-control" />
+                <span asp-validation-for="product.Nom" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="Marque" class="control-label"></label>
-                <input asp-for="Marque" class="form-control" />
-                <span asp-validation-for="Marque" class="text-danger"></span>
+                <label asp-for="product.Marque" class="control-label"></label>
+                <input asp-for="product.Marque" class="form-control" />
+                <span asp-validation-for="product.Marque" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="QteStock" class="control-label"></label>
-                <input asp-for="QteStock" class="form-control" />
-                <span asp-validation-for="QteStock" class="text-danger"></span>
+                <label asp-for="product.QteStock" class="control-label"></label>
+                <input asp-for="product.QteStock" class="form-control" />
+                <span asp-validation-for="product.QteStock" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <select asp-for="Categorie" id="DropDownList1">
-                    <option asp-for="Categorie" value="">Please Select</option>
-                    <option asp-for="Categorie" value="Greater Noida">Greater Noida</option>
-                    <option asp-for="Categorie" value="NewYork">NewYork</option>
-                    <option asp-for="Categorie" value="Paris">Paris</option>
+                <select class="form-select" asp-for="IdCategory" asp-items="@(new SelectList(Model.category,"IdCategory","Name"))" >
+                        <option selected>Choisir Categorie  </option>
                 </select>
                 <!--<span asp-validation-for="Categorie" class="text-danger"></span>-->
             </div>
             <div class="form-group mb-3">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <!--<label for="floatingTextarea"></label>-->
+                <label asp-for="product.Description" class="control-label"></label>
+                <input asp-for="product.Description" class="form-control" />
+                <!--<label for="product.floatingTextarea"></label>-->
             </div>
             <div class="form-group mb-3">
-                <label asp-for="prixUnite" class="control-label"></label>
-                <input asp-for="prixUnite" class="form-control" />
-                <span asp-validation-for="prixUnite" class="text-danger"></span>
+                <label asp-for="product.prixUnite" class="control-label"></label>
+                <input asp-for="product.prixUnite" class="form-control" />
+                <span asp-validation-for="product.prixUnite" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />

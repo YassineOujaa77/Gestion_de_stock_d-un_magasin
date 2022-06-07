@@ -6,7 +6,7 @@ namespace GestionDeStockMagasin.Models
     public class Category
     {
         [Key]
-        public int Id { get; set; }
+        public int IdCategory { get; set; }
         [Required]
         public string Name { get; set; }
         

@@ -1,0 +1,35 @@
+﻿@using GestionDeStockMagasin.Models
+@model IEnumerable<Statistic>
+
+@{
+    ViewData["Title"] = "Produits";
+    int i = 0;
+}
+
+<br>
+<table class="table">
+  <thead>
+    <tr>
+            <th>
+                 @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qte)
+            </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+   @foreach (var item in Model ){
+
+    <tr>
+      
+      <td>@Html.DisplayFor(modellitem => modellitem.ElementAt(i).Product)</td>
+      <td>@Html.DisplayFor(modellitem => modellitem.ElementAt(i).Qte)</td>
+    
+    </tr>
+    i++;
+    }
+  </tbody>
+</table>
+

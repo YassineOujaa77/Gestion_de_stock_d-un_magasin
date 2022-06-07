@@ -21,7 +21,10 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
-            
+            @if (Context.Session.GetString("Id")  != null )
+            {
+
+           
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
             <div class="dropdown-menu">
@@ -29,20 +32,29 @@
                 <a class="dropdown-item" asp-controller="Product" asp-action="Create">Add Product</a>
                 <a class="dropdown-item" asp-controller="Product" asp-action="Index">Remove Product</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Achats</a>
+                <a class="dropdown-item" asp-controller="Achat" asp-action="Create">Achats</a>
             </div>
             </li>
             <li class="nav-item">
               <a class="nav-link " asp-area="" asp-controller="Category" asp-action="Index">Category</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link " asp-area="" asp-controller="Personnels" asp-action="Index">Personnel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " asp-area="" asp-controller="Statistics" asp-action="Index">Statistics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " asp-area="" asp-controller="Facture" asp-action="Index">Livraison</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link " asp-controller="Product" asp-action="Alert">Alerts</a>
             </li>
+             }
+            <partial name="_navlogin" />
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+         
+        
         </div>
     </div>
     </nav>
@@ -52,7 +64,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-
+            <partial name="_Notification" />
             @RenderBody()
         </main>
     </div>
