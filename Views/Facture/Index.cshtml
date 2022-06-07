@@ -1,4 +1,4 @@
-﻿@model GestionDeStockMagasin.ViewModel.LivraisonIndexViewModel
+﻿@model GestionDeStockMagasin.ViewModels.LivraisonIndexViewModel
 @{
     ViewData["Title"] = "Facture";
 } 
@@ -17,7 +17,7 @@
                             <hr />
                     </div>
                     <div class="mb-3">
-                        <input type="hidden" asp-route-id="idFacture">
+                        <input type="hidden" asp-for="idFact" value="@Model.idFactureList[i]" >
                         <label asp-for="ClientId" class=" text-dark form-control"> ClientId: @Model.Clients[i].Nom </label> <br>
                         <label asp-for="ProductId" class=" text-dark form-control"> ProduitId: @Model.Products[i].Nom </label><br>
 

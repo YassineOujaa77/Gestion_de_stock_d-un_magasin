@@ -26,7 +26,7 @@ namespace GestionDeStockMagasin.Models
 
         [Required(ErrorMessage = "Mobile is required")]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\d{10}$",ErrorMessage ="Phone must be 10 digits long")]
+        //[RegularExpression(@"^\d{10}$",ErrorMessage ="Phone must be 10 digits long")]
         public int Phone { get; set; }
 
     }

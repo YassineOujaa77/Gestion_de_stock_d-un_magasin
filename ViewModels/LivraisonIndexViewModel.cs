@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using GestionDeStockMagasin.Models;
 
-namespace GestionDeStockMagasin.ViewModel
+namespace GestionDeStockMagasin.ViewModels
 {
     public class LivraisonIndexViewModel
     {
@@ -11,12 +11,15 @@ namespace GestionDeStockMagasin.ViewModel
         public int ProductId { get; set; }
         public int Id { get; set; }
 
-        public int idFacture { get; set; }
+        public int IdFacture { get; set; }
+        public int idFact {get; set;}
         public List<Client> Clients { get; set; }
 
         public List<Product> Products { get; set; }
         public List<Personnel> Personnels { get; set; }
-        public List<Facture> Factures { get; set; }
+        public Facture Factures { get; set; }
+
+        public List<int> idFactureList {get; set ;}
 
         
     }

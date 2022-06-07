@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GestionDeStockMagasin.Data;
 using GestionDeStockMagasin.Models;
-using GestionDeStockMagasin.ViewModel;
+using GestionDeStockMagasin.ViewModels;
 
 namespace GestionDeStockMagasin.Controllers
 {
@@ -25,6 +25,7 @@ namespace GestionDeStockMagasin.Controllers
             factures = context.Facture.Where(f => f.livrer == false).ToList();
             List<Client> clients = new List<Client>();
             List<Product> products = new List<Product>();
+            List<int> idFacturesList = new List<int>();
                 foreach (var item in factures)
             {
                 var client = new Client();
@@ -35,11 +36,14 @@ namespace GestionDeStockMagasin.Controllers
                 product = context.Products.Where(c=> c.ProductId == item.ProductId).Select(p => p).SingleOrDefault();
                 products.Add(product); 
 
+                idFacturesList.Add(item.IdFacture);
+
 
             }
 
             LivraisonIndexViewModel viewModel = new LivraisonIndexViewModel()
             {
+                idFactureList = idFacturesList,
                 Clients = clients,
                 Products = products,
                 Personnels = context.personnels.Where(x=> x.Role == "Delivery Man").ToList(),
@@ -72,7 +76,7 @@ namespace GestionDeStockMagasin.Controllers
         public ActionResult Create(LivraisonIndexViewModel livraisonIndexViewModel )
         {
             Facture facture = new Facture();
-            facture = context.Facture.Find(livraisonIndexViewModel.idFacture);
+            facture = context.Facture.Find(livraisonIndexViewModel.idFact);
             facture.livrer = true;
             context.Facture.Update(facture);
             context.SaveChanges();

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GestionDeStockMagasin.Data;
 using GestionDeStockMagasin.Models;
+using GestionDeStockMagasin.ViewModels;
 
 namespace GestionDeStockMagasin.Controllers
 {
@@ -33,22 +34,34 @@ namespace GestionDeStockMagasin.Controllers
         // GET
         public IActionResult Create()
         {
-            //IEnumerable<Category> objCategoryList = _db.Categories ;
-            return View();
+           
+            ProductCreateViewModel viewModel = new ProductCreateViewModel(){
+                category = _db.Categories.ToList(),
+            };
+            return View(viewModel);
         }
 
         //Post 
         [HttpPost]
         [ValidateAntiForgeryToken]
-         public IActionResult Create(Product obj)
+         public IActionResult Create(ProductCreateViewModel productCreateViewModel)
         {
             //if(ModelState.IsValid){
-                var results = _db.Products.Where(p => p.Nom.ToLower() == obj.Nom.ToLower() ).Select(p => p.Nom).SingleOrDefault();
+                var results = _db.Products.Where(p => p.Nom.ToLower() == productCreateViewModel.product.Nom.ToLower() ).Select(p => p.Nom).SingleOrDefault();
+                Product p = new Product();
+                p.Nom = productCreateViewModel.product.Nom;
+                p.Marque = productCreateViewModel.product.Marque;
+                p.QteStock = productCreateViewModel.product.QteStock;
+                p.Categorie = _db.Categories.Where(p => p.IdCategory == productCreateViewModel.IdCategory).Select(p=>p.Name).SingleOrDefault();
+                p.prixUnite = productCreateViewModel.product.prixUnite;
+                p.Description = productCreateViewModel.product.Description;
+                
+
                 if(results!=null){
                     TempData["error"] = "Ce Produit existe déjà ";
-                    return View(obj);
+                    return View();
                 }else{
-                    _db.Products.Add(obj);
+                    _db.Products.Add(p);
                     _db.SaveChanges();
                     TempData["success"] = "Product added successfully ";
                     return RedirectToAction("Index");

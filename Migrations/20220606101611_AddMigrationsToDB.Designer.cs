@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionDeStockMagasin.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220606072603_AddMigrationsToDB")]
+    [Migration("20220606101611_AddMigrationsToDB")]
     partial class AddMigrationsToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace GestionDeStockMagasin.Migrations
 
             modelBuilder.Entity("GestionDeStockMagasin.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdCategory")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCategory"), 1L, 1);
 
                     b.Property<DateTime>("CreateDateTime")
                         .HasColumnType("datetime2");
@@ -39,7 +39,7 @@ namespace GestionDeStockMagasin.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdCategory");
 
                     b.ToTable("Categories");
                 });

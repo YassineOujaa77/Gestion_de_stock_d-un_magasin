@@ -145,7 +145,7 @@ namespace GestionDeStockMagasin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Prenom,Email,Password,Adresse,Role,Phone")] Personnel personnel)
         {
-            var results = _context.personnels.Where(p => p.Email.ToLower() == personnel.Email.ToLower() || p.Phone == personnel.Phone && p.Id != id).Select(p => new { p.Email,p.Phone }).SingleOrDefault();
+            var results = _context.personnels.Where(p => (p.Email.ToLower() == personnel.Email.ToLower() || p.Phone == personnel.Phone) && (p.Id != id)).Select(p => new { p.Email,p.Phone }).SingleOrDefault();
                 if(results!=null){
                     TempData["error"] = "Ce Personnel existe déjà ";
                     return View(personnel);
